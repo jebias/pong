@@ -32,6 +32,7 @@ size = Vector2(169.5, 648)
 position = Vector2(576, 324)
 scale = Vector2(2, 2)
 script = ExtResource("2_7mycd")
+speed = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ball"]
 texture_filter = 1
@@ -40,11 +41,11 @@ texture = ExtResource("1_1bvp3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ball"]
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="left_paddle" type="CharacterBody2D" parent="."]
+[node name="left_paddle" type="CharacterBody2D" parent="." groups=["paddle"]]
 position = Vector2(96, 324)
 scale = Vector2(2, 2)
 script = ExtResource("3_272bh")
-speed = 150.0
+speed = 200.0
 ball_path = NodePath("../ball")
 separator_path = NodePath("../separator")
 
@@ -55,7 +56,7 @@ texture = ExtResource("2_lquwl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_paddle"]
 shape = SubResource("RectangleShape2D_lquwl")
 
-[node name="right_paddle" type="CharacterBody2D" parent="."]
+[node name="right_paddle" type="CharacterBody2D" parent="." groups=["paddle"]]
 position = Vector2(1056, 324)
 scale = Vector2(2, 2)
 script = ExtResource("4_7mycd")
@@ -104,6 +105,50 @@ shape = SubResource("RectangleShape2D_5vw27")
 [node name="hud" type="CanvasLayer" parent="."]
 script = ExtResource("10_4c57u")
 
+[node name="start_menu" type="Panel" parent="hud"]
+z_index = 1
+custom_minimum_size = Vector2(200, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="start_label" type="Label" parent="hud/start_menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Welcome To Pong"
+horizontal_alignment = 1
+
+[node name="start_button" type="Button" parent="hud/start_menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -15.5
+offset_right = 23.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
 [node name="score" type="Label" parent="hud"]
 texture_filter = 1
 anchors_preset = 5
@@ -127,9 +172,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -157.0
+offset_top = -50.0
 offset_right = 100.0
-offset_bottom = -57.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 
